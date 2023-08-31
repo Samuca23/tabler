@@ -1,9 +1,9 @@
 <?php
-require_once "produtos.php";
+require_once "Produtos.php";
 
 $oProduto = new Produto();
 
-$aDados = $oProduto->getAllProduto();
+$aDados = $oProduto->getAllProduct();
 foreach ($aDados as $oDado) {
     echo $oDado['procodigobarra'];
     echo $oDado['prodescricao'];

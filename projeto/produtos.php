@@ -126,17 +126,18 @@
                       <?php
                         require_once "../Produtos.php";
                         $oProduto = new Produto();
-                        $aDados = $oProduto->getAllProduto();
+                        $aDados = $oProduto->getAllProduct();
                         foreach($aDados as $oDado) {
+                          $iValorTotalVenda = $oProduto->getTotalSaleFromProduct($oDado['produto_codigo']);
                           echo '<tr>';
                           echo '  <td>
-                                    <span class="text-muted">' . $oDado['procodigobarra'] . '</span>
+                                    <span class="text-muted">' . $oDado['produto_codigo'] . '</span>
                                   </td>';
-                          echo '  <td>' . $oDado['prodescricao'] . '</td>';
-                          echo '  <td>R$ ' . $oDado['provalorunidade'] . '</td>';
-                          echo '  <td>' . $oDado['proestoque'] . '</td>';
+                          echo '  <td>' . $oDado['produto_descricao'] . '</td>';
+                          echo '  <td>R$ ' . $oDado['produto_valor_unidade'] . '</td>';
+                          echo '  <td>' . $oDado['produto_estoque'] . '</td>';
                           echo '  <td>08/09/2019</td>';
-                          echo '  <td>R$ 30,00</td>';
+                          echo '  <td>R$ ' . $iValorTotalVenda . '</td>';
                           echo '  <td>
                                     <a class="icon" href="./form-produto-edit.html">
                                       <i class="fe fe-edit"></i>
