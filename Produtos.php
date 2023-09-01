@@ -1,4 +1,11 @@
 <?php
+
+namespace Produto;
+
+use ControllerConexao;
+
+require_once "ControllerConexao.php";
+
 /**
  *  Classe para os Produtos
  * 
@@ -6,18 +13,9 @@
  * @author Samuel Chiodini 
  * @since 31/08/2023
  */
-require_once "Conexao.php";
 
-class Produto {
-    
-    public $conexao;
-
-    public function __construct()
-    {
-        $oConexao = new Conexao();
-        $oConexao->setConexao();
-        $this->conexao = $oConexao;
-    }
+class Produtos extends ControllerConexao
+{
 
     /**
      * Método utilizado para retornar todos os produtos
@@ -57,9 +55,24 @@ class Produto {
         $aValor = $aResultado[0];
         if ($aValor['venda_total'] > 0) {
             return $aValor['venda_total'];
-        } 
+        }
 
         return 0;
     }
 
+    /**
+     * Método responsável por retornar a quantidade de produtos
+     *
+     * @return integer
+     */
+    public function getQuantityProduct(): int
+    {
+        $sSql = "SELECT COALESCE(MAX(procodigo), 0) AS total_produto
+                   FROM tbproduto";
+        $this->conexao->query($sSql);
+        $aResultado = $this->conexao->getArrayResults();
+        $aValor = $aResultado[0];
+
+        return $aValor['total_produto'];
+    }
 }
