@@ -106,12 +106,12 @@
               <div class="card">
                 <div class="card-body p-3 text-center">
                   <?php
-                    use Produto\Produtos;
-                    require_once "../Produtos.php";
-                    $oProduto = new Produtos();
+                    use ControllerProduto\ControllerProdutos;
+                    require_once "../ControllerProdutos.php";
+                    $oProduto = new ControllerProdutos();
                     $iQuantidadeProduto = $oProduto->getQuantityProduct();
                     echo '<div class="h1 m-0">' . $iQuantidadeProduto . '</div>'
-                    ?>
+                  ?>
                   <div class="text-muted mb-4">Produtos</div>
                 </div>
               </div>
@@ -120,12 +120,12 @@
               <div class="card">
                 <div class="card-body p-3 text-center">
                   <?php 
-                    use Vendas\Vendas;
-                    require_once "../Vendas.php";
-                    $oVenda = new Vendas();
+                    use ControllerVendas\ControllerVendas;
+                    require_once "../ControllerVendas.php";
+                    $oVenda = new ControllerVendas();
                     $iQuantidadeVenda = $oVenda->getQuantitySale();
                     echo '<div class="h1 m-0">' . $iQuantidadeVenda . '</div>';
-                    ?>
+                  ?>
                   <div class="text-muted mb-4">Venda</div>
                 </div>
               </div>

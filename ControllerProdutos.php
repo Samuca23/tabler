@@ -1,6 +1,6 @@
 <?php
 
-namespace Produto;
+namespace ControllerProduto;
 
 use ControllerConexao;
 
@@ -14,7 +14,7 @@ require_once "ControllerConexao.php";
  * @since 31/08/2023
  */
 
-class Produtos extends ControllerConexao
+class ControllerProdutos extends ControllerConexao
 {
 
     /**

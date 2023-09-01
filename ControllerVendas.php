@@ -1,6 +1,6 @@
 <?php
 
-namespace Vendas;
+namespace ControllerVendas;
 
 use ControllerConexao;
 
@@ -13,7 +13,7 @@ require_once "ControllerConexao.php";
  * @author Samuel Chiodini 
  * @since 01/09/2023
  */
-class Vendas extends ControllerConexao
+class ControllerVendas extends ControllerConexao
 {
 
     public function getQuantitySale(): int

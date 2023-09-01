@@ -124,9 +124,9 @@
                     </thead>
                     <tbody>
                       <?php
-                        use Produto\Produtos;
-                        require_once "../Produtos.php";
-                        $oProduto = new Produtos();
+                        use ControllerProduto\ControllerProdutos;
+                        require_once "../ControllerProdutos.php";
+                        $oProduto = new ControllerProdutos();
                         $aDados = $oProduto->getAllProduct();
                         foreach($aDados as $oDado) {
                           $iValorTotalVenda = $oProduto->getTotalSaleFromProduct($oDado['produto_codigo']);
