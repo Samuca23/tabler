@@ -12,6 +12,11 @@
 class ModelVenda extends \ModelPadrao
 {
 
+    /**
+     * Método responsável por retornar todas as venas
+     *
+     * @return array
+     */
     public function getAllSale(): array
     {
         $sSql = "SELECT tbvenda.vencodigo         AS venda_codigo,
