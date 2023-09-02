@@ -1,10 +1,7 @@
 <?php
 
-namespace ControllerVendas;
-
-use ControllerConexao;
-
-require_once "ControllerConexao.php";
+require_once "Factory.php";
+\Factory::requireModelPadrao();
 
 /**
  * Classe de Vendas
@@ -13,7 +10,7 @@ require_once "ControllerConexao.php";
  * @author Samuel Chiodini 
  * @since 01/09/2023
  */
-class ControllerVendas extends ControllerConexao
+class ModelVenda extends \ModelPadrao
 {
 
     /**

@@ -106,9 +106,9 @@
               <div class="card">
                 <div class="card-body p-3 text-center">
                   <?php
-                    use ControllerProduto\ControllerProdutos;
-                    require_once "../ControllerProdutos.php";
-                    $oProduto = new ControllerProdutos();
+                    require_once "../Factory.php";
+                    \Factory::requireModelProduto();
+                    $oProduto = new ModelProduto();
                     $iQuantidadeProduto = $oProduto->getQuantityProduct();
                     echo '<div class="h1 m-0">' . $iQuantidadeProduto . '</div>'
                   ?>
@@ -120,9 +120,9 @@
               <div class="card">
                 <div class="card-body p-3 text-center">
                   <?php 
-                    use ControllerVendas\ControllerVendas;
-                    require_once "../ControllerVendas.php";
-                    $oVenda = new ControllerVendas();
+                    require_once "../Factory.php";
+                    \Factory::requireModelVenda();
+                    $oVenda = new ModelVenda();
                     $iQuantidadeVenda = $oVenda->getQuantitySale();
                     echo '<div class="h1 m-0">' . $iQuantidadeVenda . '</div>';
                   ?>

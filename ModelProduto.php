@@ -1,10 +1,6 @@
 <?php
 
-namespace ControllerProduto;
-
-use ControllerConexao;
-
-require_once "ControllerConexao.php";
+\Factory::requireModelPadrao();
 
 /**
  *  Classe para os Produtos
@@ -13,8 +9,7 @@ require_once "ControllerConexao.php";
  * @author Samuel Chiodini 
  * @since 31/08/2023
  */
-
-class ControllerProdutos extends ControllerConexao
+class ModelProduto extends \ModelPadrao
 {
 
     /**
