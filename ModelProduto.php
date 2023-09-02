@@ -23,8 +23,7 @@ class ModelProduto extends \ModelPadrao
                         tbproduto.procodigobarra     AS produto_codigo_barra,
                         tbproduto.prodescricao       AS produto_descricao,
                         tbproduto.proestoque         AS produto_estoque,
-                        tbproduto.provalorunidade    AS produto_valor_unidade,
-                        tbproduto.prodataultimavenda AS produto_data_utlima_venda
+                        tbproduto.provalorunidade    AS produto_valor_unidade
                    FROM tbproduto";
         $this->conexao->query($sSql);
         $aResultado = $this->conexao->getArrayResults();

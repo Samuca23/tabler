@@ -1,6 +1,5 @@
 <?php
 
-require_once "Factory.php";
 \Factory::requireModelPadrao();
 
 /**
@@ -12,6 +11,24 @@ require_once "Factory.php";
  */
 class ModelVenda extends \ModelPadrao
 {
+
+    public function getAllSale(): array
+    {
+        $sSql = "SELECT tbvenda.vencodigo         AS venda_codigo,
+		                tbvenda.venquantidade     AS venda_quantidade,
+                        tbvenda.venvalortotal     AS venda_valor_total,
+                        tbvenda.vendata           AS venda_data,
+                        tbvenda.procodigo         AS produto_codigo,
+                        tbproduto.prodescricao    AS produto_descricao,
+                        tbproduto.provalorunidade AS produto_valor_unidade
+                   FROM tbvenda
+                   JOIN tbproduto 
+                     ON tbproduto.procodigo = tbvenda.procodigo";
+        $this->conexao->query($sSql);
+        $aResultado = $this->conexao->getArrayResults();
+
+        return $aResultado;
+    }
 
     /**
      * Método responsável por retornar o total de vendas
