@@ -84,10 +84,10 @@
                   <a href="./produtos.php" class="nav-link"><i class="fe fe-package"></i> Produtos</a>
                 </li>
                 <li class="nav-item">
-                  <a href="./form-venda.html" class="nav-link"><i class="fe fe-dollar-sign"></i> Venda</a>
+                  <a href="./form-venda.php" class="nav-link"><i class="fe fe-dollar-sign"></i> Venda</a>
                 </li>
                 <li class="nav-item">
-                  <a href="./produtos-excluidos.html" class="nav-link"><i class="fe fe-trash"></i> Lixeira</a>
+                  <a href="./produtos-excluidos.phpform-venda.php" class="nav-link"><i class="fe fe-trash"></i> Lixeira</a>
                 </li>
               </ul>
             </div>

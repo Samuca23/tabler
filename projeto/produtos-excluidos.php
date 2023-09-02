@@ -76,16 +76,16 @@
               <div class="col-lg order-lg-first">
                 <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                   <li class="nav-item">
-                    <a href="./index.html" class="nav-link"><i class="fe fe-home"></i> Home</a>
+                    <a href="./index.php" class="nav-link"><i class="fe fe-home"></i> Home</a>
                   </li>
 		  <li class="nav-item">
-                    <a href="./produtos.html" class="nav-link"><i class="fe fe-package"></i> Produtos</a>
+                    <a href="./produtos.phpindex.php" class="nav-link"><i class="fe fe-package"></i> Produtos</a>
                   </li>
 		  <li class="nav-item">
-                    <a href="./form-venda.html" class="nav-link"><i class="fe fe-dollar-sign"></i> Venda</a>
+                    <a href="./form-venda.phpindex.php" class="nav-link"><i class="fe fe-dollar-sign"></i> Venda</a>
                   </li>
 		  <li class="nav-item">
-                    <a href="./produtos-excluidos.html" class="nav-link active"><i class="fe fe-trash"></i> Lixeira</a>
+                    <a href="./produtos-excluidos.phpindex.php" class="nav-link active"><i class="fe fe-trash"></i> Lixeira</a>
                   </li>
                 </ul>
               </div>

@@ -11,6 +11,9 @@ class ModelPadrao
         $this->createConnection();
     }
 
+    /**
+     * Método utilizado para criar a conexão
+     */
     private function createConnection()
     {
         $this->conexao = Factory::getConnection();
