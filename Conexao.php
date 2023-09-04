@@ -10,7 +10,8 @@
  *
  * @author Area central
  */
-class Conexao {
+class Conexao
+{
 
   private $nome;
   private $host;
@@ -21,15 +22,17 @@ class Conexao {
   private $conexao;
   private $query;
 
-  function __construct($sNome = 'avaliacao', $sHost = 'localhost', $sUsuario = 'root', $sSenha = '123456') {
+  function __construct($sNome = 'avaliacao', $sHost = 'localhost', $sUsuario = 'root', $sSenha = '123456')
+  {
     $this->nome    = $sNome;
     $this->host    = $sHost;
     $this->usuario = $sUsuario;
     $this->senha   = $sSenha;
   }
 
-  public function setConexao() {
-    if(!empty($this->host) && !empty($this->usuario)) {
+  public function setConexao()
+  {
+    if (!empty($this->host) && !empty($this->usuario)) {
       if (@$this->conexao = mysqli_connect($this->host, $this->usuario, $this->senha)) {
         mysqli_select_db($this->conexao, $this->nome);
 
@@ -52,9 +55,10 @@ class Conexao {
     }
   }
 
-  public function query($sSql, $bReturn = false) {
-    if($rQry = mysqli_query($this->conexao, $sSql)) {
-      if($bReturn) {
+  public function query($sSql, $bReturn = false)
+  {
+    if ($rQry = mysqli_query($this->conexao, $sSql)) {
+      if ($bReturn) {
         return $rQry;
       } else {
         $this->query = $rQry;
@@ -62,15 +66,18 @@ class Conexao {
     }
   }
 
-  public function getQuery() {
+  public function getQuery()
+  {
     return $this->query;
   }
 
-  public function closeConexao() {
+  public function closeConexao()
+  {
     mysqli_close($this->conexao);
   }
 
-  public function getArrayResults() {
+  public function getArrayResults()
+  {
     $aReturn = [];
     while ($aDados = mysqli_fetch_array($this->query, MYSQLI_ASSOC)) {
       $aReturn[] = $aDados;

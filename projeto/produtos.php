@@ -16,6 +16,7 @@
   <meta name="MobileOptimized" content="320">
   <link rel="icon" href="./favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
+  <script type="text/javascript" src="assets/js/ComportamentoProduto.js"></script>
   <!-- Generated: 2018-04-16 09:29:05 +0200 -->
   <title>Produtos</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -105,7 +106,7 @@
                 <div class="card-header">
                   <h3 class="card-title">Produtos</h3>
                   <div class="card-options">
-                    <a href="./form-produto.html" class="btn btn-azure">Adicionar</a>
+                    <a href="./form-produto.php" class="btn btn-azure">Adicionar</a>
                   </div>
                 </div>
                 <div class="table-responsive">
@@ -144,9 +145,9 @@
                                       <i class="fe fe-edit"></i>
                                     </a>
                                   </td>';
-                          echo '  <td>
-                                    <a class="icon" href="javascript:void(0)">
-                                      <i class="fe fe-trash"></i>
+                          echo '  <td>';
+                          echo '    <a class="icon" href="javascript:void(0)" onclick="deleteProduct(' . $oDado['produto_codigo'] . ')">';
+                          echo '      <i class="fe fe-trash"></i>
                                     </a>
                                   </td>';
                           echo '  </tr>';

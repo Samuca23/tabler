@@ -1,5 +1,6 @@
 <?php
 
+require_once "Factory.php";
 \Factory::requireModelPadrao();
 
 /**
@@ -68,5 +69,16 @@ class ModelProduto extends \ModelPadrao
         $aValor = $aResultado[0];
 
         return $aValor['total_produto'];
+    }
+
+    public function insertProduct($sDescricao, $iEstoque, $iCodigobarra, $iValorUnidade)
+    {
+        $sSql = "INSERT INTO tbproduto(prodescricao, proestoque, procodigobarra, provalorunidade) VALUES ('{$sDescricao}', {$iEstoque}, {$iCodigobarra}, {$iValorUnidade})";
+        try {
+            $this->conexao->query($sSql, true);
+            header("Location: projeto/produtos.php");
+        } catch(Exception) {
+            echo "<h3>Não foi possível inserir esse registro, verifique as informações.</h3>";
+        }
     }
 }
