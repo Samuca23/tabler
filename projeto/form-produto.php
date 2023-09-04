@@ -101,7 +101,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
-              <form class="card" method="POST" action="../../tabler/controllerInsere.php?produto">
+              <form class="card" method="POST" action="../../tabler/Controller/controllerInsere.php?produto&insert">
                 <div class="card-body">
                   <h3 class="card-title">Novo produto</h3>
                   <div class="row">

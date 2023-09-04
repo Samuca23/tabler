@@ -76,7 +76,7 @@ class ModelProduto extends \ModelPadrao
         $sSql = "INSERT INTO tbproduto(prodescricao, proestoque, procodigobarra, provalorunidade) VALUES ('{$sDescricao}', {$iEstoque}, {$iCodigobarra}, {$iValorUnidade})";
         try {
             $this->conexao->query($sSql, true);
-            header("Location: projeto/produtos.php");
+            header("Location: ../projeto/produtos.php");
         } catch(Exception) {
             echo "<h3>Não foi possível inserir esse registro, verifique as informações.</h3>";
         }

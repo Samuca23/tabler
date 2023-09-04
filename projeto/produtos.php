@@ -141,7 +141,7 @@
                           echo '  <td>08/09/2019</td>';
                           echo '  <td>R$ ' . $iValorTotalVenda . '</td>';
                           echo '  <td>
-                                    <a class="icon" href="./form-produto-edit.html">
+                                    <a class="icon" href="./form-produto-edit.php">
                                       <i class="fe fe-edit"></i>
                                     </a>
                                   </td>';

@@ -1,8 +1,10 @@
 <?php
-require_once("Factory.php");
+require_once("../Factory.php");
 
-if (isset($_GET['produto'])) {
-    insertProduct();
+switch ($_GET) {
+    case isset($_GET['produto']) && isset($_GET['insert']):
+        insertProduct();
+        break;
 }
 
 function insertProduct()

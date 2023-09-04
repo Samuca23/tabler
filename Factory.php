@@ -44,4 +44,9 @@ class Factory
         require_once "ModelLixo.php";
     }
 
+    static public function requireControllerInsere()
+    {
+        require_once("Controller/controllerInsere.php");
+    }
+
 }
