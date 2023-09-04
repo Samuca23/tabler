@@ -32,6 +32,21 @@ class ModelProduto extends \ModelPadrao
         return $aResultado;
     }
 
+    public function getProductFromCod($iCodigo): array
+    {
+        $sSql = "SELECT tbproduto.procodigo          AS produto_codigo,
+                        tbproduto.procodigobarra     AS produto_codigo_barra,
+                        tbproduto.prodescricao       AS produto_descricao,
+                        tbproduto.proestoque         AS produto_estoque,
+                        tbproduto.provalorunidade    AS produto_valor_unidade
+                   FROM tbproduto
+                  WHERE tbproduto.procodigo = {$iCodigo}";
+        $this->conexao->query($sSql);
+        $aResultado = $this->conexao->getArrayResults();
+
+        return $aResultado;
+    }
+
     /**
      * Método utilizado para retornar o valor total de vendas do produto
      *
@@ -77,8 +92,19 @@ class ModelProduto extends \ModelPadrao
         try {
             $this->conexao->query($sSql, true);
             header("Location: ../projeto/produtos.php");
-        } catch(Exception) {
+        } catch (Exception) {
             echo "<h3>Não foi possível inserir esse registro, verifique as informações.</h3>";
+        }
+    }
+
+    public function deleteProduct($iCodigo)
+    {
+        $sSql = "DELETE FROM tbproduto WHERE tbproduto.procodigo = {$iCodigo}";
+        try {
+            $this->conexao->query($sSql, true);
+            echo true;
+        } catch (Exception) {
+            echo "Não foi possível deletar esse registro";
         }
     }
 }

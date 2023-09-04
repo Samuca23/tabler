@@ -5,6 +5,8 @@ switch ($_GET) {
     case isset($_GET['produto']) && isset($_GET['insert']):
         insertProduct();
         break;
+    default:
+        echo "Error";
 }
 
 function insertProduct()
