@@ -9,7 +9,7 @@ class ModelLixo extends \ModelPadrao
     public function insertTrash($aDados)
     {
         $sProduto = $this->TreatProductData($aDados[0]);
-        $sSql = "INSERT INTO tblixo (lixdata, lixdado) VALUES (now(), {$sProduto})";
+        $sSql = "INSERT INTO tblixo (lixdata, lixdado) VALUES (now(), '{$sProduto}')";
         if ($this->conexao->query($sSql, true)) {
             return true;
         }

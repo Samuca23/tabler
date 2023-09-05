@@ -3,7 +3,6 @@
             $.ajax({
                 type: 'POST',
                 url: '../../tabler/Controller/controllerDelete.php?produto&delete&codigo=' + iCodigo,
-                // url: '../../../Controller/controllerDelete.php?produto&delete&codigo=' + iCodigo,
                 data: {
                     acao: 'excluir',
                     codigo: iCodigo
@@ -19,3 +18,4 @@
             });
         }
     }
+

@@ -55,7 +55,7 @@ class ModelProduto extends \ModelPadrao
      */
     public function getTotalSaleFromProduct($iProduct): int
     {
-        $sSql = "SELECT SUM(tbvenda.venvalortotal) AS venda_total
+        $sSql = "SELECT COUNT(tbvenda.venvalortotal) AS venda_total
                    FROM tbproduto
                    JOIN tbvenda 
                      ON tbvenda.procodigo = tbproduto.procodigo
@@ -77,7 +77,7 @@ class ModelProduto extends \ModelPadrao
      */
     public function getQuantityProduct(): int
     {
-        $sSql = "SELECT COALESCE(MAX(procodigo), 0) AS total_produto
+        $sSql = "SELECT COUNT(procodigo) AS total_produto
                    FROM tbproduto";
         $this->conexao->query($sSql);
         $aResultado = $this->conexao->getArrayResults();

@@ -18,8 +18,9 @@ function insertTrash($iCodigo)
     $oModelProduto = getModelProduto();
     $aDadoProduto = $oModelProduto->getProductFromCod($iCodigo);
     if ($aDadoProduto) {
-        $oModelLixo->insertTrash($aDadoProduto);
+        return $oModelLixo->insertTrash($aDadoProduto);
     }
+    return false; 
 }
 
 function deleteProduct($iCodigo)
