@@ -86,6 +86,25 @@ class ModelProduto extends \ModelPadrao
         return $aValor['total_produto'];
     }
 
+    public function getDateLasSaleProduct($iCodigo) {
+        $sSql = "SELECT tbproduto.procodigo  AS produto_codigo,
+                        DATE_FORMAT(MAX(tbvenda.vendata), '%d/%m/%Y') AS venda_data
+                   FROM tbproduto
+                   JOIN tbvenda
+                     ON tbvenda.procodigo = tbproduto.procodigo
+                  WHERE tbproduto.procodigo = {$iCodigo}
+                   GROUP BY tbproduto.procodigo";
+         $this->conexao->query($sSql);
+         $aResultado = $this->conexao->getArrayResults();
+         if ($aResultado) {
+             $aValor = $aResultado[0];
+     
+            return $aValor['venda_data'];
+         }
+
+         return 'Sem vendas';
+    }
+
     public function insertProduct($sDescricao, $iEstoque, $iCodigobarra, $iValorUnidade)
     {
         $sSql = "INSERT INTO tbproduto(prodescricao, proestoque, procodigobarra, provalorunidade) VALUES ('{$sDescricao}', {$iEstoque}, {$iCodigobarra}, {$iValorUnidade})";
