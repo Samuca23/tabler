@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
   <script src="./assets/js/require.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     requirejs.config({
       baseUrl: '.'
@@ -39,7 +40,7 @@
   <script src="./assets/plugins/input-mask/plugin.js"></script>
 </head>
 
-<body class="" onload="loadDataAlterProduct()">
+<body class="" onload="alterProduct()">
   <div class="page">
     <div class="page-main">
       <div class="header py-4">
@@ -99,32 +100,32 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
-              <form class="card">
+              <form class="card" method="POST" action="../../tabler/Controller/controllerAlter.php?produto&alter">
                 <div class="card-body">
                   <h3 class="card-title">Editar produto</h3>
                   <div class="row">
                     <div class="col-sm-6 col-md-4">
                       <div class="form-group">
                         <label class="form-label">Código</label>
-                        <input type="number" class="form-control produto-codigo" disabled>
+                        <input type="number" class="form-control produto-codigo" name="codigo" readonly>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class="form-label">Descrição</label>
-                        <input type="text" class="form-control produto-descricao" name="example-text-input" placeholder="Arroz.." value="Batata">
+                        <input type="text" class="form-control produto-descricao" name="descricao" placeholder="Arroz.." value="Batata">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-4">
                       <div class="form-group">
                         <label class="form-label">Estoque</label>
-                        <input type="number" class="form-control produto-estoque" placeholder="10.." value="2000">
+                        <input type="number" class="form-control produto-estoque" placeholder="10.."  name="estoque">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-4">
                       <div class="form-group">
                         <label class="form-label">Código de barras</label>
-                        <input type="number" class="form-control produto-codigo-barra" placeholder="78978978978978">
+                        <input type="number" class="form-control produto-codigo-barra" name="codigo_barra">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-4">
@@ -134,7 +135,7 @@
                           <span class="input-group-prepend">
                             <span class="input-group-text">R$</span>
                           </span>
-                          <input type="text" class="form-control text-right produto-valor-unidade" aria-label="Valor" value="1,50">
+                          <input type="text" class="form-control text-right produto-valor-unidade" aria-label="Valor" name="valor_unidade">
                         </div>
                       </div>
                     </div>

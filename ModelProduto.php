@@ -93,7 +93,19 @@ class ModelProduto extends \ModelPadrao
             $this->conexao->query($sSql, true);
             header("Location: ../projeto/produtos.php");
         } catch (Exception) {
-            echo "<h3>Não foi possível inserir esse registro, verifique as informações.</h3>";
+            echo "<h3>Não foi possível alterar esse registro, verifique as informações.</h3>";
+        }
+    }
+    
+    public function alterProduct($iCodigo, $sDescricao, $iEstoque, $iCodigobarra, $iValorUnidade) {
+        $sSql = "UPDATE tbproduto 
+                    SET prodescricao = '{$sDescricao}', proestoque = {$iEstoque}, procodigobarra = {$iCodigobarra}, provalorunidade = {$iValorUnidade} 
+                  WHERE procodigo = {$iCodigo}";
+        try {
+            $this->conexao->query($sSql, true);
+            header("Location: ../projeto/produtos.php");
+        } catch (Exception) {
+            echo "<h3>Não foi possível alterar esse registro, verifique as informações.</h3>";
         }
     }
 

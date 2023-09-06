@@ -6,36 +6,41 @@
                 success: (response) => {
                     if (response) {
                         var bDeleteSucess = true;
-                    } 
-                    window.location.href= '../../tabler/projeto/produtos.php';
+                    }
+                    window.location.href = '../../tabler/projeto/produtos.php';
                 }
             });
         }
     }
 
-    function alterProduct(iCodigo) {
-        if (confirm('Deseja alterar esse produto?')) {
-            $.ajax({
-                type:'POST',
-                url: '../../tabler/Controller/controllerAlter.php?produto&alter&codigo=' + iCodigo,
-                success: (response) => {
-                    if (response) {
-                        aDados = JSON.parse(response);
-                        return aDados;
-                    } 
-                }
-            });
-        }
-    }
-    
-    function loadDataAlterProduct() {
-        let url = new URL (window.location.href);
+    function alterProduct() {
+        let url = new URL(window.location.href);
         let iCodigo = url.searchParams.get('codigo');
-        let aDados = alterProduct(iCodigo);
 
+        $.ajax({
+            url: '../../tabler/Controller/controllerAlter.php?produto&alter&codigo=' + iCodigo,
+            type: 'POST',
+            success: (response) => {
+                if (response) {
+                    var aDados = JSON.parse(response);
+                    loadDataAlterProduct(aDados);
+                }
+            }
+        });
+    }
+
+    function loadDataAlterProduct(aDados) {
         let oCodigo = document.getElementsByClassName('produto-codigo');
         let oDescricao = document.getElementsByClassName('produto-descricao');
         let oEstoque = document.getElementsByClassName('produto-estoque');
         let oCodigoBarra = document.getElementsByClassName('produto-codigo-barra');
         let oValorUnidade = document.getElementsByClassName('produto-valor-unidade');
+
+        if (oCodigo && oDescricao && oEstoque && oCodigoBarra && oValorUnidade) {
+            oCodigo[0].value = aDados.produto_codigo;
+            oDescricao[0].value = aDados.produto_descricao;
+            oEstoque[0].value = aDados.produto_estoque;
+            oCodigoBarra[0].value = aDados.produto_codigo_barra;
+            oValorUnidade[0].value = aDados.produto_valor_unidade;
+        }
     }
