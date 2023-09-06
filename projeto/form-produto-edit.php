@@ -25,6 +25,7 @@
       baseUrl: '.'
     });
   </script>
+  <script type="text/javascript" src="assets/js/ComportamentoProduto.js"></script>
   <!-- Dashboard Core -->
   <link href="./assets/css/dashboard.css" rel="stylesheet" />
   <script src="./assets/js/dashboard.js"></script>
@@ -38,7 +39,7 @@
   <script src="./assets/plugins/input-mask/plugin.js"></script>
 </head>
 
-<body class="">
+<body class="" onload="loadDataAlterProduct()">
   <div class="page">
     <div class="page-main">
       <div class="header py-4">
@@ -105,25 +106,25 @@
                     <div class="col-sm-6 col-md-4">
                       <div class="form-group">
                         <label class="form-label">Código</label>
-                        <input type="number" class="form-control" disabled>
+                        <input type="number" class="form-control produto-codigo" disabled>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class="form-label">Descrição</label>
-                        <input type="text" class="form-control" name="example-text-input" placeholder="Arroz.." value="Batata">
+                        <input type="text" class="form-control produto-descricao" name="example-text-input" placeholder="Arroz.." value="Batata">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-4">
                       <div class="form-group">
                         <label class="form-label">Estoque</label>
-                        <input type="number" class="form-control" placeholder="10.." value="2000">
+                        <input type="number" class="form-control produto-estoque" placeholder="10.." value="2000">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-4">
                       <div class="form-group">
                         <label class="form-label">Código de barras</label>
-                        <input type="number" class="form-control" placeholder="78978978978978">
+                        <input type="number" class="form-control produto-codigo-barra" placeholder="78978978978978">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-4">
@@ -133,7 +134,7 @@
                           <span class="input-group-prepend">
                             <span class="input-group-text">R$</span>
                           </span>
-                          <input type="text" class="form-control text-right" aria-label="Valor" value="1,50">
+                          <input type="text" class="form-control text-right produto-valor-unidade" aria-label="Valor" value="1,50">
                         </div>
                       </div>
                     </div>

@@ -140,9 +140,9 @@
                           echo '  <td>' . $oDado['produto_estoque'] . '</td>';
                           echo '  <td>08/09/2019</td>';
                           echo '  <td>R$ ' . $iValorTotalVenda . '</td>';
-                          echo '  <td>
-                                    <a class="icon" href="./form-produto-edit.php">
-                                      <i class="fe fe-edit"></i>
+                          echo '  <td>';
+                          echo '    <a class="icon" href="form-produto-edit.php?codigo=' . $oDado['produto_codigo'] . '">';
+                          echo '      <i class="fe fe-edit"></i>
                                     </a>
                                   </td>';
                           echo '  <td>';
