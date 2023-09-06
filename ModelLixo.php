@@ -10,10 +10,15 @@ class ModelLixo extends \ModelPadrao
     {
         $sSql = "SELECT tblixo.lixcodigo AS lixo_codigo,
                         tblixo.lixdata   AS lixo_data,
-                        tblixo.lixdado   AS lixdado
+                        tblixo.lixdado   AS lixo_dado
                    FROM tblixo";
         $this->conexao->query($sSql);
         $aResultado = $this->conexao->getArrayResults();
+
+        foreach ($aResultado as $iKey => $oDado) {
+            $aDadoDecode = json_decode($oDado['lixo_dado']);
+            $aResultado[$iKey]['lixo_dado'] = $aDadoDecode;
+        }
 
         return $aResultado;
     }

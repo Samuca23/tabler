@@ -81,13 +81,13 @@
                   <a href="./index.php" class="nav-link"><i class="fe fe-home"></i> Home</a>
                 </li>
                 <li class="nav-item">
-                  <a href="./produtos.phpindex.php" class="nav-link"><i class="fe fe-package"></i> Produtos</a>
+                  <a href="./produtos.php" class="nav-link"><i class="fe fe-package"></i> Produtos</a>
                 </li>
                 <li class="nav-item">
-                  <a href="./form-venda.phpindex.php" class="nav-link"><i class="fe fe-dollar-sign"></i> Venda</a>
+                  <a href="./form-venda.php" class="nav-link"><i class="fe fe-dollar-sign"></i> Venda</a>
                 </li>
                 <li class="nav-item">
-                  <a href="./produtos-excluidos.phpindex.php" class="nav-link active"><i class="fe fe-trash"></i> Lixeira</a>
+                  <a href="./produtos-excluidos.php" class="nav-link active"><i class="fe fe-trash"></i> Lixeira</a>
                 </li>
               </ul>
             </div>
@@ -110,43 +110,32 @@
                         <th>Descrição</th>
                         <th>Valor unitário</th>
                         <th>Estoque</th>
+                        <th>Código de Barra</th>
                         <th class="w-1"></th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php
-                      
+                        require_once "../Factory.php";
+                        \Factory::requireModelLixo();
+                        $oLixo = new ModelLixo();
+                        $aDados = $oLixo->getAllTrash();
+                        foreach ($aDados as $oDado) {
+                          $aDadoProdutoLixo = get_object_vars($oDado['lixo_dado']);
+                          echo '<tr>';
+                          echo     '<td><span class="text-muted">1</span></td>';
+                          echo     '<td>' . $aDadoProdutoLixo['produto_descricao'] . '</td>';
+                          echo     '<td>R$' . $aDadoProdutoLixo['produto_valor_unidade'] . '</td>';
+                          echo     '<td>' . $aDadoProdutoLixo['produto_estoque'] . '</td>';
+                          echo     '<td>' . $aDadoProdutoLixo['produto_codigo_barra'] . '</td>';
+                          echo     '<td>';
+                          echo         '<a class="icon" href="#">';
+                          echo             '<i class="fe fe-refresh-ccw"></i>
+                                        </a>
+                                    </td>
+                                </tr>';
+                        }
                       ?>
-                      <tr>
-                        <td><span class="text-muted">1</span></td>
-                        <td>Batata rosa</td>
-                        <td>
-                          R$ 1,50
-                        </td>
-                        <td>
-                          2000
-                        </td>
-                        <td>
-                          <a class="icon" href="#">
-                            <i class="fe fe-refresh-ccw"></i>
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td><span class="text-muted">2</span></td>
-                        <td>Farinha</td>
-                        <td>
-                          R$ 7,50
-                        </td>
-                        <td>
-                          200
-                        </td>
-                        <td>
-                          <a class="icon" href="#">
-                            <i class="fe fe-refresh-ccw"></i>
-                          </a>
-                        </td>
-                      </tr>
                     </tbody>
                   </table>
                 </div>
