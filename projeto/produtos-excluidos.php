@@ -19,6 +19,7 @@
   <title>Produtos</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
+  <script type="text/javascript" src="assets/js/ComportamentoLixo.js"></script>
   <script src="./assets/js/require.min.js"></script>
   <script>
     requirejs.config({
@@ -129,7 +130,11 @@
                           echo     '<td>' . $aDadoProdutoLixo['produto_estoque'] . '</td>';
                           echo     '<td>' . $aDadoProdutoLixo['produto_codigo_barra'] . '</td>';
                           echo     '<td>';
-                          echo         '<a class="icon" href="#">';
+                          echo '<a class="icon" href="javascript:void(0)" onclick="onClickRestauraProduto(\'' . addslashes($aDadoProdutoLixo['produto_descricao']) . '\', 
+                                                                                                          \'' . $aDadoProdutoLixo['produto_valor_unidade'] . '\',
+                                                                                                          \'' . $aDadoProdutoLixo['produto_estoque'] . '\',
+                                                                                                          \'' . $aDadoProdutoLixo['produto_codigo_barra'] . '\',
+                                                                                                          \'' . $oDado['lixo_codigo'] . '\')">';
                           echo             '<i class="fe fe-refresh-ccw"></i>
                                         </a>
                                     </td>

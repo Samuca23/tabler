@@ -8,6 +8,10 @@ switch ($_GET) {
     case isset($_GET['venda']):
         insertSale();
         break;
+    case isset($_GET['produto']) && isset($_GET['restore']):
+        insertProduct();
+        deleteTrash();
+        break;
     default:
         echo "Error";
 }
@@ -31,7 +35,8 @@ function insertProduct()
 /**
  * Método para controlar ao inserir uma Venda
  */
-function insertSale() {
+function insertSale()
+{
     if (isset($_POST['produto_codigo']) && isset($_POST['quantidade']) && isset($_POST['valor_total']) && isset($_POST['valor_unidade'])) {
         \Factory::requireModelVenda();
         $oModelVenda = new ModelVenda();
@@ -43,5 +48,15 @@ function insertSale() {
     } else {
         var_dump($_POST);
         echo "<h3>Não foi possível realizar a venda, retorne e verifique as informações.</h3>";
+    }
+}
+
+function deleteTrash() {
+    if (isset($_POST['lixo_codigo'])) {
+        \Factory::requireModelLixo();
+        $oModelLixo = new ModelLixo();
+        $oModelLixo->deleteTrash($_POST['lixo_codigo']);
+    } else {
+        echo '<h3>Não foi possível restaurar o produto</h3>';
     }
 }
