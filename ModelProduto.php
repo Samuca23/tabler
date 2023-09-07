@@ -68,29 +68,6 @@ class ModelProduto extends \ModelPadrao
     }
 
     /**
-     * Método utilizado para retornar o valor total de vendas do produto
-     *
-     * @param [int] $iProduct
-     * @return integer
-     */
-    public function getTotalSaleFromProduct($iProduct): int
-    {
-        $sSql = "SELECT SUM(tbvenda.venvalortotal) AS venda_total
-                   FROM tbproduto
-                   JOIN tbvenda 
-                     ON tbvenda.procodigo = tbproduto.procodigo
-                  WHERE tbproduto.procodigo = {$iProduct}";
-        $this->conexao->query($sSql);
-        $aResultado = $this->conexao->getArrayResults();
-        $aValor = $aResultado[0];
-        if ($aValor['venda_total'] > 0) {
-            return $aValor['venda_total'];
-        }
-
-        return 0;
-    }
-
-    /**
      * Método responsável por retornar a quantidade de produtos
      *
      * @return integer
@@ -104,26 +81,6 @@ class ModelProduto extends \ModelPadrao
         $aValor = $aResultado[0];
 
         return $aValor['total_produto'];
-    }
-
-    public function getDateLasSaleProduct($iCodigo)
-    {
-        $sSql = "SELECT tbproduto.procodigo  AS produto_codigo,
-                        DATE_FORMAT(MAX(tbvenda.vendata), '%d/%m/%Y') AS venda_data
-                   FROM tbproduto
-                   JOIN tbvenda
-                     ON tbvenda.procodigo = tbproduto.procodigo
-                  WHERE tbproduto.procodigo = {$iCodigo}
-                   GROUP BY tbproduto.procodigo";
-        $this->conexao->query($sSql);
-        $aResultado = $this->conexao->getArrayResults();
-        if ($aResultado) {
-            $aValor = $aResultado[0];
-
-            return $aValor['venda_data'];
-        }
-
-        return 'Sem vendas';
     }
 
     public function existsProduct($iCodigo)
