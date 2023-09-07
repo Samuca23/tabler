@@ -1,6 +1,7 @@
 CREATE DATABASE avaliacao;
  
-
+ USE avaliacao;
+ 
 /* Criação da tabela de Produto */
 CREATE TABLE tbproduto (
 	procodigo INT AUTO_INCREMENT NOT NULL PRIMARY KEY COMMENT 'Código do produto',
@@ -45,6 +46,3 @@ INSERT INTO tbproduto (procodigo, prodescricao, provalorunidade, proestoque, pro
 INSERT INTO tbproduto (procodigo, prodescricao, provalorunidade, proestoque, procodigobarra) VALUES (3, 'Monitor', 999, 3, 71717123);
 INSERT INTO tbproduto (procodigo, prodescricao, provalorunidade, proestoque, procodigobarra) VALUES (4, 'Computador', 3800, 3, 777777);
 
-/* Povoando tabela de Venda */
-INSERT INTO tbvenda (vencodigo, venquantidade, venvalortotal, vendata, procodigo) VALUES (1, 2, 240, NOW(), 1);
-INSERT INTO tbvenda (vencodigo, venquantidade, venvalortotal, vendata, procodigo) VALUES (3, 1, 449.99, '2023-09-03 23:49:12', 2);
