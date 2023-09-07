@@ -29,7 +29,8 @@ class ModelVenda extends \ModelPadrao
                         tbproduto.provalorunidade AS produto_valor_unidade
                    FROM tbvenda
                    JOIN tbproduto 
-                     ON tbproduto.procodigo = tbvenda.procodigo";
+                     ON tbproduto.procodigo = tbvenda.procodigo
+                   ORDER BY tbvenda.vencodigo DESC";
         $this->conexao->query($sSql);
         $aResultado = $this->conexao->getArrayResults();
 
