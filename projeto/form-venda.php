@@ -126,7 +126,7 @@
                     <div class="col-sm-6 col-md-4">
                       <div class="form-group">
                         <label class="form-label">Quantidade</label>
-                        <input type="number" class="form-control quantidade" name="quantidade" placeholder="Digite aqui a quantidade">
+                        <input type="number" class="form-control quantidade" name="quantidade" placeholder="Digite aqui a quantidade" onchange="onChangeQuantidade()">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-4">
