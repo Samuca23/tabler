@@ -1,5 +1,5 @@
 CREATE DATABASE avaliacao;
-USE avaliacao;
+ 
 
 /* Criação da tabela de Produto */
 CREATE TABLE tbproduto (
@@ -12,12 +12,16 @@ CREATE TABLE tbproduto (
 /* Criação de indice para tabela de produto */
 CREATE INDEX ind_procodigo ON tbproduto (procodigo);
 
+/* Adicionando uma UNIQUE para os códigos de barra */
+ALTER TABLE  tbproduto ADD CONSTRAINT procodigo_barra_unique UNIQUE (procodigobarra);
+
 /* Criação da tabela de venda */
 CREATE TABLE tbvenda (
 	vencodigo INT AUTO_INCREMENT NOT NULL PRIMARY KEY COMMENT 'Código da venda',
     venquantidade BIGINT NOT NULL COMMENT 'Quantidade de produto na venda',
     venvalortotal DECIMAL (10,2) NOT NULL COMMENT 'Valor total da venda',
     vendata TIMESTAMP NOT NULL COMMENT 'Data da venda',
+    venvalorunidade DECIMAL (10,2) NOT NULL COMMENT 'Valor da unidade do Produto na venda',
     procodigo INT NOT NULL COMMENT 'Código do produto'
 );
 /* Alterando para adicionar uma FK com Produto */
@@ -25,6 +29,15 @@ ALTER TABLE tbvenda ADD CONSTRAINT fk_produto_venda FOREIGN KEY (procodigo) REFE
 
 /* Criação de indice para tabela de venda */
 CREATE INDEX ind_vencodigo ON tbvenda (vencodigo);
+
+/* Criação a tabela de lixo */
+CREATE TABLE tblixo (
+	lixcodigo INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    lixdata TIMESTAMP NOT NULL,
+    lixdado JSON NOT NULL
+);
+/* Criação de indique para tabela de lixo */
+CREATE INDEX ind_lixcodigo ON tblixo(lixcodigo);
 
 /* Povoando a tabela de Produto */
 INSERT INTO tbproduto (procodigo, prodescricao, provalorunidade, proestoque, procodigobarra) VALUES (1, 'Mouse', 120, 10, 78787878);
@@ -34,4 +47,4 @@ INSERT INTO tbproduto (procodigo, prodescricao, provalorunidade, proestoque, pro
 
 /* Povoando tabela de Venda */
 INSERT INTO tbvenda (vencodigo, venquantidade, venvalortotal, vendata, procodigo) VALUES (1, 2, 240, NOW(), 1);
-INSERT INTO tbvenda (vencodigo, venquantidade, venvalortotal, vendata, procodigo) VALUES (2, 1, 449.99, NOW(), 2);
+INSERT INTO tbvenda (vencodigo, venquantidade, venvalortotal, vendata, procodigo) VALUES (3, 1, 449.99, '2023-09-03 23:49:12', 2);
