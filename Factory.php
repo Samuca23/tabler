@@ -17,7 +17,7 @@ class Factory
      */
     static public function requireModelPadrao()
     {
-        require_once "ModelPadrao.php";
+        require_once "Model/ModelPadrao.php";
     }
 
     /**
@@ -25,7 +25,7 @@ class Factory
      */
     static public function requireModelProduto()
     {
-        require_once "ModelProduto.php";
+        require_once "Model/ModelProduto.php";
     }
 
     /**
@@ -33,7 +33,7 @@ class Factory
      */
     static public function requireModelVenda()
     {
-        require_once "ModelVenda.php";
+        require_once "Model/ModelVenda.php";
     }
 
     /**
@@ -41,7 +41,7 @@ class Factory
      */
     static public function requireModelLixo()
     {
-        require_once "ModelLixo.php";
+        require_once "Model/ModelLixo.php";
     }
 
     static public function requireControllerInsere()

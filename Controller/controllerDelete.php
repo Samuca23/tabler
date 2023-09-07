@@ -43,8 +43,6 @@ function deleteProduct($iCodigo)
 
 /**
  * Método para retornar o Modelo de Produto
- *
- * @return void
  */
 function getModelProduto()
 {
@@ -59,8 +57,6 @@ function getModelProduto()
 
 /**
  * Método para retornar o Modelo de Lixo
- *
- * @return void
  */
 function getModelLixo()
 {

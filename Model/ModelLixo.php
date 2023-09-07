@@ -1,6 +1,5 @@
 <?php
 
-require_once "Factory.php";
 \Factory::requireModelPadrao();
 
 class ModelLixo extends \ModelPadrao
