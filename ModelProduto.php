@@ -13,7 +13,8 @@ require_once "Factory.php";
 class ModelProduto extends \ModelPadrao
 {
 
-    public function getAllProductList() {
+    public function getAllProductList()
+    {
         $sSql = "SELECT tbproduto.procodigo                                                   AS produto_codigo,
                         tbproduto.procodigobarra                                              AS produto_codigo_barra,
                         tbproduto.prodescricao                                                AS produto_descricao,
@@ -28,7 +29,7 @@ class ModelProduto extends \ModelPadrao
                   ORDER BY tbproduto.prodescricao";
         $this->conexao->query($sSql);
         $aResultado = $this->conexao->getArrayResults();
-           
+
         return $aResultado;
     }
 

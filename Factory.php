@@ -23,7 +23,7 @@ class Factory
     /**
      * Método utilizado para fazer o require do Model de Produto
      */
-    static public function requireModelProduto() 
+    static public function requireModelProduto()
     {
         require_once "ModelProduto.php";
     }
@@ -31,7 +31,7 @@ class Factory
     /**
      * Método utilizado para fazer o require do Model de Venda
      */
-    static public function requireModelVenda() 
+    static public function requireModelVenda()
     {
         require_once "ModelVenda.php";
     }
@@ -48,5 +48,4 @@ class Factory
     {
         require_once("Controller/controllerInsere.php");
     }
-
 }

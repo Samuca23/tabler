@@ -6,7 +6,12 @@ require_once "Factory.php";
 class ModelLixo extends \ModelPadrao
 {
 
-    public function getAllTrash():array
+    /**
+     * Método para retornar todos os dados do lixo
+     *
+     * @return array
+     */
+    public function getAllTrash(): array
     {
         $sSql = "SELECT tblixo.lixcodigo AS lixo_codigo,
                         tblixo.lixdata   AS lixo_data,
@@ -23,7 +28,13 @@ class ModelLixo extends \ModelPadrao
         return $aResultado;
     }
 
-    public function insertTrash($aDados)
+    /**
+     * Método para inserir um dado no lixo
+     *
+     * @param [array] $aDados
+     * @return boolean
+     */
+    public function insertTrash($aDados): bool
     {
         $sProduto = $this->TreatProductData($aDados[0]);
         $sSql = "INSERT INTO tblixo (lixdata, lixdado) VALUES (now(), '{$sProduto}')";
@@ -34,6 +45,12 @@ class ModelLixo extends \ModelPadrao
         return false;
     }
 
+    /**
+     * Método para tratar os dados do produto
+     *
+     * @param [array] $aDado
+     * @return string
+     */
     private function TreatProductData($aDado): string
     {
         return json_encode($aDado);
