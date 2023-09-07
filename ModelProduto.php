@@ -13,7 +13,12 @@ require_once "Factory.php";
 class ModelProduto extends \ModelPadrao
 {
 
-    public function getAllProductList()
+    /**
+     * Método para retornar os produtos para a consulta de Produtos
+     *
+     * @return array
+     */
+    public function getAllProductList(): array
     {
         $sSql = "SELECT tbproduto.procodigo                                                   AS produto_codigo,
                         tbproduto.procodigobarra                                              AS produto_codigo_barra,
@@ -53,6 +58,12 @@ class ModelProduto extends \ModelPadrao
         return $aResultado;
     }
 
+    /**
+     * Método para retornar os dados de um determinado Produto
+     *
+     * @param [int] $iCodigo
+     * @return array
+     */
     public function getProductFromCod($iCodigo): array
     {
         $sSql = "SELECT tbproduto.procodigo          AS produto_codigo,
@@ -84,7 +95,13 @@ class ModelProduto extends \ModelPadrao
         return $aValor['total_produto'];
     }
 
-    public function existsProduct($iCodigo)
+    /**
+     * Método para verificar se existe o Produto no estoque
+     *
+     * @param [int] $iCodigo
+     * @return bool
+     */
+    public function existsProduct($iCodigo): bool
     {
         $aProduto = $this->getProductFromCod($iCodigo);
         if ($aProduto[0]['produto_estoque'] > 0) {
@@ -93,6 +110,15 @@ class ModelProduto extends \ModelPadrao
         return false;
     }
 
+    /**
+     * Método que insere um Produto
+     *
+     * @param [string] $sDescricao
+     * @param [int] $iEstoque
+     * @param [int] $iCodigobarra
+     * @param [int] $iValorUnidade
+     * @return void
+     */
     public function insertProduct($sDescricao, $iEstoque, $iCodigobarra, $iValorUnidade)
     {
         $sSql = "INSERT INTO tbproduto(prodescricao, proestoque, procodigobarra, provalorunidade) VALUES ('{$sDescricao}', {$iEstoque}, {$iCodigobarra}, {$iValorUnidade})";
@@ -104,6 +130,16 @@ class ModelProduto extends \ModelPadrao
         }
     }
 
+    /**
+     * Método para alterar um Produto
+     *
+     * @param [int] $iCodigo
+     * @param [string] $sDescricao
+     * @param [int] $iEstoque
+     * @param [int] $iCodigobarra
+     * @param [int] $iValorUnidade
+     * @return void
+     */
     public function alterProduct($iCodigo, $sDescricao, $iEstoque, $iCodigobarra, $iValorUnidade)
     {
         $sSql = "UPDATE tbproduto 
@@ -117,6 +153,12 @@ class ModelProduto extends \ModelPadrao
         }
     }
 
+    /**
+     * Método para deletar um Produto
+     *
+     * @param [int] $iCodigo
+     * @return void
+     */
     public function deleteProduct($iCodigo)
     {
         $sSql = "DELETE FROM tbproduto WHERE tbproduto.procodigo = {$iCodigo}";
