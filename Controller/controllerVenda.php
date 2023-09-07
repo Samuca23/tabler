@@ -10,6 +10,12 @@ switch ($_GET) {
         break;
 }
 
+/**
+ * Método para retonar os dados do Produto
+ *
+ * @param [int] $iCodigo
+ * @return void
+ */
 function buscaDadosProduto($iCodigo) {
     Factory::requireModelProduto();
     $oModelProduto = new ModelProduto();

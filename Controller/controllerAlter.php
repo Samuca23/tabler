@@ -11,6 +11,11 @@ switch ($_GET) {
         echo "Error";
 }
 
+/**
+ * Método para controlar a Alteração de um Produto
+ *
+ * @return void
+ */
 function alterProdutc()
 {
     if (isset($_POST['codigo']) && isset($_POST['descricao']) && isset($_POST['estoque']) && isset($_POST['codigo_barra']) && isset($_POST['valor_unidade'])) {
@@ -24,6 +29,12 @@ function alterProdutc()
     }
 }
 
+/**
+ * Método para retornar os dados do Produto para setar os dados.
+ *
+ * @param [int] $iCodigo
+ * @return void
+ */
 function loadDataProduct($iCodigo)
 {
     \Factory::requireModelProduto();

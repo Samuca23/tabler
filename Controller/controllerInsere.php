@@ -12,6 +12,9 @@ switch ($_GET) {
         echo "Error";
 }
 
+/**
+ * Método para controlador ao inserir um Produto
+ */
 function insertProduct()
 {
     if (isset($_POST['descricao']) && isset($_POST['estoque']) && isset($_POST['codigo_barra']) && isset($_POST['valor_unidade'])) {
@@ -25,6 +28,9 @@ function insertProduct()
     }
 }
 
+/**
+ * Método para controlar ao inserir uma Venda
+ */
 function insertSale() {
     if (isset($_POST['produto_codigo']) && isset($_POST['quantidade']) && isset($_POST['valor_total']) && isset($_POST['valor_unidade'])) {
         \Factory::requireModelVenda();

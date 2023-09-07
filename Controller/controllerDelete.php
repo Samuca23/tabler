@@ -11,6 +11,11 @@ switch ($_GET) {
         echo "Error";
 }
 
+/**
+ * Método para controlar ao inserir um dado no Lixo
+ *
+ * @param [int] $iCodigo
+ */
 function insertTrash($iCodigo)
 {
     \Factory::requireModelLixo();
@@ -23,6 +28,11 @@ function insertTrash($iCodigo)
     return false; 
 }
 
+/**
+ * Método para controlar a exclusão de um Produto
+ *
+ * @param [int] $iCodigo
+ */
 function deleteProduct($iCodigo)
 {
     if ($iCodigo) {
@@ -31,6 +41,11 @@ function deleteProduct($iCodigo)
     }
 }
 
+/**
+ * Método para retornar o Modelo de Produto
+ *
+ * @return void
+ */
 function getModelProduto()
 {
     static $oModelProduto;
@@ -42,6 +57,11 @@ function getModelProduto()
     return $oModelProduto;
 }
 
+/**
+ * Método para retornar o Modelo de Lixo
+ *
+ * @return void
+ */
 function getModelLixo()
 {
     static $oModelLixo;
