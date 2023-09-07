@@ -52,6 +52,16 @@ class ModelVenda extends \ModelPadrao
         return $aValor['total_venda'];
     }
 
+    /**
+     * Método para inserir uma Venda
+     *
+     * @param [int] $iProdutoCodigo
+     * @param [int] $iQuantidade
+     * @param [int] $iValorTotal
+     * @param [int] $iValorUnidade
+     * @param [bool] $bAtualizaValor
+     * @return void
+     */
     public function insertSale($iProdutoCodigo, $iQuantidade, $iValorTotal, $iValorUnidade, $bAtualizaValor)
     {
         \Factory::requireModelProduto();
@@ -77,6 +87,13 @@ class ModelVenda extends \ModelPadrao
         }
     }
 
+    /**
+     * Método para atualizar o Estoque do Produto
+     *
+     * @param [int] $iProdutoCodigo
+     * @param [int] $iQuantidade
+     * @return void
+     */
     public function updateEstoqueProduto($iProdutoCodigo, $iQuantidade) {
         $sSql = "UPDATE tbproduto SET proestoque = proestoque - {$iQuantidade} WHERE procodigo = {$iProdutoCodigo}";
         try {
@@ -86,6 +103,13 @@ class ModelVenda extends \ModelPadrao
         }
     }
     
+    /**
+     * Método para atualizar o Valor do Produto
+     *
+     * @param [int] $iProdutoCodigo
+     * @param [int] $iValorUnidade
+     * @return void
+     */
     public function updateValorProduto($iProdutoCodigo, $iValorUnidade) {
         $sSql = "UPDATE tbproduto SET provalorunidade = {$iValorUnidade} WHERE procodigo ={$iProdutoCodigo}";
         try {
