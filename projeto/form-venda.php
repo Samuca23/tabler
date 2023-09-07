@@ -99,7 +99,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
-              <form class="card">
+              <form class="card" method="POST" action="../../tabler/Controller/controllerInsere.php?venda">
                 <div class="card-body">
                   <h3 class="card-title">Realizar venda de um produto</h3>
                   <div class="row">
@@ -111,6 +111,7 @@
                       <div class="form-group">
                         <label class="form-label">Produto</label>
                         <select class="form-control custom-select select-produto" onchange="onChangeProduto()">
+                          <option>Selecione...</option>
                           <?php
                             require_once "../Factory.php";
                             Factory::requireModelProduto();
@@ -136,7 +137,7 @@
                           <span class="input-group-prepend">
                             <span class="input-group-text">R$</span>
                           </span>
-                          <input type="text" class="form-control text-right valor-unidade" name="valor_unidade" aria-label="Valor">
+                          <input type="text" class="form-control text-right valor-unidade" name="valor_unidade" aria-label="Valor" onchange="onChangeQuantidade()">
                         </div>
                       </div>
                     </div>
@@ -147,7 +148,7 @@
                           <span class="input-group-prepend">
                             <span class="input-group-text">R$</span>
                           </span>
-                          <input type="text" class="form-control text-right valor-total"  name="valor_total" aria-label="Valor" disabled="disabled" title="Este campo não pode ser alterado">
+                          <input type="text" class="form-control text-right valor-total"  name="valor_total" aria-label="Valor" readonly title="Este campo não pode ser alterado">
                         </div>
                       </div>
                     </div>
@@ -156,7 +157,7 @@
                         <div class="form-label">&nbsp;</div>
                         <div class="custom-controls-stacked">
                           <label class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" name="atualiza_valor" value="option1" checked>
+                            <input type="checkbox" class="custom-control-input" name="atualiza_valor" checked>
                             <span class="custom-control-label">Atualizar valor unitário do produto</span>
                           </label>
                         </div>
@@ -209,7 +210,7 @@
                                   </td>';
                           echo '  <td>' . $oDado['produto_descricao'] . '</td>';
                           echo '  <td>' . $oDado['venda_quantidade'] . '</td>';
-                          echo '  <td>' . $oDado['produto_valor_unidade'] . '</td>';
+                          echo '  <td>' . $oDado['venda_valor_unidade'] . '</td>';
                           echo '  <td>' . $oDado['venda_valor_total'] . '</td>';
                           echo '</tr>';
                         }

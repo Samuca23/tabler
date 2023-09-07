@@ -13,10 +13,11 @@ function limpaCampos() {
     let oQuantidade = document.getElementsByClassName('quantidade');
     let oValorTotal = document.getElementsByClassName('valor-total');
     
-    if (oProdutoCodigo && oQuantidade && oValorTotal) {
+    if (oProdutoCodigo && oQuantidade && oValorTotal && oValorUnidade) {
         oProdutoCodigo[0].value = '';
         oQuantidade[0].value = '';
         oValorTotal[0].value = '';
+        oValorUnidade[0].value = '';
     }
 }
 
@@ -25,7 +26,7 @@ function getDadosProdutoFromAjax(iCodigo) {
         type: 'GET',
         url: '../../tabler/Controller/controllerVenda.php?produto&codigo=' + iCodigo,
         success: (response) => {
-            if (response) {
+            if (response) { 
                 setDadosProduto(JSON.parse(response));
             }
         }

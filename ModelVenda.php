@@ -23,6 +23,7 @@ class ModelVenda extends \ModelPadrao
 		                tbvenda.venquantidade     AS venda_quantidade,
                         tbvenda.venvalortotal     AS venda_valor_total,
                         tbvenda.vendata           AS venda_data,
+                        tbvenda.venvalorunidade   AS venda_valor_unidade,
                         tbvenda.procodigo         AS produto_codigo,
                         tbproduto.prodescricao    AS produto_descricao,
                         tbproduto.provalorunidade AS produto_valor_unidade
@@ -49,5 +50,48 @@ class ModelVenda extends \ModelPadrao
         $aValor = $aResultado[0];
 
         return $aValor['total_venda'];
+    }
+
+    public function insertSale($iProdutoCodigo, $iQuantidade, $iValorTotal, $iValorUnidade, $bAtualizaValor)
+    {
+        \Factory::requireModelProduto();
+        $oModelProduto = new ModelProduto();
+        if ($oModelProduto->existsProduct($iProdutoCodigo)) {
+
+            $sSql = "INSERT INTO tbvenda (venquantidade, venvalortotal, vendata, venvalorunidade, procodigo) VALUES ({$iQuantidade}, {$iValorTotal}, NOW(), {$iValorUnidade}, {$iProdutoCodigo})";
+
+            try {
+                $this->conexao->query($sSql);
+                $this->updateEstoqueProduto($iProdutoCodigo, $iQuantidade);
+
+                if ($bAtualizaValor) {
+                    $this->updateValorProduto($iProdutoCodigo, $iValorUnidade);
+                }
+
+                header("Location: ../projeto/form-venda.php");
+            } catch (Exception) {
+                echo "<h3>Não foi possível realizar a venda, verifique as informações.</h3>";
+            }
+        } else {
+            echo "<h3>Não foi possível realizar a venda, o estoque.</h3>";
+        }
+    }
+
+    public function updateEstoqueProduto($iProdutoCodigo, $iQuantidade) {
+        $sSql = "UPDATE tbproduto SET proestoque = proestoque - {$iQuantidade} WHERE procodigo = {$iProdutoCodigo}";
+        try {
+            $this->conexao->query($sSql);
+        } catch (Exception) {
+            echo "<h3>Não foi possível realizar a venda, verifique as informações.</h3>";
+        }
+    }
+    
+    public function updateValorProduto($iProdutoCodigo, $iValorUnidade) {
+        $sSql = "UPDATE tbproduto SET provalorunidade = {$iValorUnidade} WHERE procodigo ={$iProdutoCodigo}";
+        try {
+            $this->conexao->query($sSql);
+        } catch (Exception) {
+            echo "<h3>Não foi possível realizar a venda, verifique as informações.</h3>";
+        }
     }
 }

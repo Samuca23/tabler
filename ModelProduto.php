@@ -87,7 +87,8 @@ class ModelProduto extends \ModelPadrao
         return $aValor['total_produto'];
     }
 
-    public function getDateLasSaleProduct($iCodigo) {
+    public function getDateLasSaleProduct($iCodigo)
+    {
         $sSql = "SELECT tbproduto.procodigo  AS produto_codigo,
                         DATE_FORMAT(MAX(tbvenda.vendata), '%d/%m/%Y') AS venda_data
                    FROM tbproduto
@@ -95,15 +96,24 @@ class ModelProduto extends \ModelPadrao
                      ON tbvenda.procodigo = tbproduto.procodigo
                   WHERE tbproduto.procodigo = {$iCodigo}
                    GROUP BY tbproduto.procodigo";
-         $this->conexao->query($sSql);
-         $aResultado = $this->conexao->getArrayResults();
-         if ($aResultado) {
-             $aValor = $aResultado[0];
-     
-            return $aValor['venda_data'];
-         }
+        $this->conexao->query($sSql);
+        $aResultado = $this->conexao->getArrayResults();
+        if ($aResultado) {
+            $aValor = $aResultado[0];
 
-         return 'Sem vendas';
+            return $aValor['venda_data'];
+        }
+
+        return 'Sem vendas';
+    }
+
+    public function existsProduct($iCodigo)
+    {
+        $aProduto = $this->getProductFromCod($iCodigo);
+        if ($aProduto[0]['produto_estoque'] > 0) {
+            return true;
+        }
+        return false;
     }
 
     public function insertProduct($sDescricao, $iEstoque, $iCodigobarra, $iValorUnidade)
@@ -116,8 +126,9 @@ class ModelProduto extends \ModelPadrao
             echo "<h3>Não foi possível alterar esse registro, verifique as informações.</h3>";
         }
     }
-    
-    public function alterProduct($iCodigo, $sDescricao, $iEstoque, $iCodigobarra, $iValorUnidade) {
+
+    public function alterProduct($iCodigo, $sDescricao, $iEstoque, $iCodigobarra, $iValorUnidade)
+    {
         $sSql = "UPDATE tbproduto 
                     SET prodescricao = '{$sDescricao}', proestoque = {$iEstoque}, procodigobarra = {$iCodigobarra}, provalorunidade = {$iValorUnidade} 
                   WHERE procodigo = {$iCodigo}";
