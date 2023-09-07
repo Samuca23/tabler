@@ -129,9 +129,8 @@
                         require_once "../Factory.php";
                         \Factory::requireModelProduto();
                         $oProduto =  new ModelProduto();
-                        $aDados = $oProduto->getAllProduct();
+                        $aDados = $oProduto->getAllProductList();
                         foreach($aDados as $oDado) {
-                          $iValorTotalVenda = $oProduto->getTotalSaleFromProduct($oDado['produto_codigo']);
                           echo '<tr>';
                           echo '  <td>
                                     <span class="text-muted">' . $oDado['produto_codigo'] . '</span>
@@ -139,8 +138,8 @@
                           echo '  <td>' . $oDado['produto_descricao'] . '</td>';
                           echo '  <td>R$ ' . $oDado['produto_valor_unidade'] . '</td>';
                           echo '  <td>' . $oDado['produto_estoque'] . '</td>';
-                          echo '  <td>' . $oProduto->getDateLasSaleProduct($oDado['produto_codigo']) . '</td>';
-                          echo '  <td>R$ ' . $iValorTotalVenda . '</td>';
+                          echo '  <td>' . $oDado['produto_venda_total'] . '</td>';
+                          echo '  <td>R$ ' . $oDado['produto_venda_ultima_data'] . '</td>';
                           echo '  <td>';
                           echo '    <a class="icon" href="form-produto-edit.php?codigo=' . $oDado['produto_codigo'] . '">';
                           echo '      <i class="fe fe-edit"></i>

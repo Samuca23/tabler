@@ -13,6 +13,25 @@ require_once "Factory.php";
 class ModelProduto extends \ModelPadrao
 {
 
+    public function getAllProductList() {
+        $sSql = "SELECT tbproduto.procodigo                                                   AS produto_codigo,
+                        tbproduto.procodigobarra                                              AS produto_codigo_barra,
+                        tbproduto.prodescricao                                                AS produto_descricao,
+                        tbproduto.proestoque                                                  AS produto_estoque,
+                        tbproduto.provalorunidade                                             AS produto_valor_unidade,
+                        COALESCE(SUM(tbvenda.venvalortotal), 'Sem vendas')                    AS produto_venda_total,
+                        COALESCE(DATE_FORMAT(MAX(tbvenda.vendata), '%d/%m/%Y'), 'Sem vendas') AS produto_venda_ultima_data
+                   FROM tbproduto
+                   LEFT JOIN tbvenda
+                     ON tbvenda.procodigo = tbproduto.procodigo
+                  GROUP BY (tbproduto.procodigo)
+                  ORDER BY tbproduto.prodescricao";
+        $this->conexao->query($sSql);
+        $aResultado = $this->conexao->getArrayResults();
+           
+        return $aResultado;
+    }
+
     /**
      * Método utilizado para retornar todos os produtos
      *
@@ -56,7 +75,7 @@ class ModelProduto extends \ModelPadrao
      */
     public function getTotalSaleFromProduct($iProduct): int
     {
-        $sSql = "SELECT COUNT(tbvenda.venvalortotal) AS venda_total
+        $sSql = "SELECT SUM(tbvenda.venvalortotal) AS venda_total
                    FROM tbproduto
                    JOIN tbvenda 
                      ON tbvenda.procodigo = tbproduto.procodigo
