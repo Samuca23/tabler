@@ -51,6 +51,9 @@ function insertSale()
     }
 }
 
+/**
+ * Método para controlar o delete de dados do Lixo
+ */
 function deleteTrash() {
     if (isset($_POST['lixo_codigo'])) {
         \Factory::requireModelLixo();

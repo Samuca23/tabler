@@ -55,6 +55,11 @@ class ModelLixo extends \ModelPadrao
         return json_encode($aDado);
     }
 
+    /**
+     * Método para deletar dado do Lixo
+     *
+     * @param [int] $iLixoCodigo
+     */
     public function deleteTrash($iLixoCodigo) {
         $sSql = "DELETE FROM tblixo WHERE tblixo.lixcodigo = {$iLixoCodigo}";
         $this->conexao->query($sSql);

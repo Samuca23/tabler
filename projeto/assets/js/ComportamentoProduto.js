@@ -1,3 +1,8 @@
+    /**
+     *  Método para disparar Ajax para deletar um Produto
+     * 
+     * @param {int} iCodigo 
+     */
     function deleteProduct(iCodigo) {
         if (confirm('Deseja apagar o produto?')) {
             $.ajax({
@@ -13,6 +18,9 @@
         }
     }
 
+    /**
+     * Método para disparar Ajax para carregamento dos dados para Alterar o Produto
+     */
     function alterProduct() {
         let url = new URL(window.location.href);
         let iCodigo = url.searchParams.get('codigo');
@@ -29,6 +37,11 @@
         });
     }
 
+    /**
+     * Método para setar os dados do Produto nos campos.
+     * 
+     * @param {array} aDados 
+     */
     function loadDataAlterProduct(aDados) {
         let oCodigo = document.getElementsByClassName('produto-codigo');
         let oDescricao = document.getElementsByClassName('produto-descricao');
