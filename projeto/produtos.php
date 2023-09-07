@@ -128,7 +128,7 @@
                       <?php
                         require_once "../Factory.php";
                         \Factory::requireModelProduto();
-                        $oProduto = new ModelProduto();
+                        $oProduto =  new ModelProduto();
                         $aDados = $oProduto->getAllProduct();
                         foreach($aDados as $oDado) {
                           $iValorTotalVenda = $oProduto->getTotalSaleFromProduct($oDado['produto_codigo']);

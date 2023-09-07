@@ -25,7 +25,8 @@ class ModelProduto extends \ModelPadrao
                         tbproduto.prodescricao       AS produto_descricao,
                         tbproduto.proestoque         AS produto_estoque,
                         tbproduto.provalorunidade    AS produto_valor_unidade
-                   FROM tbproduto";
+                   FROM tbproduto
+                   ORDER BY tbproduto.prodescricao";
         $this->conexao->query($sSql);
         $aResultado = $this->conexao->getArrayResults();
 

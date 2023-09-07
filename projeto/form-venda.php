@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
   <script src="./assets/js/require.min.js"></script>
+  <script type="text/javascript" src="assets/js/ComportamentoVenda.js"></script>
   <script>
     requirejs.config({
       baseUrl: '.'
@@ -102,21 +103,30 @@
                 <div class="card-body">
                   <h3 class="card-title">Realizar venda de um produto</h3>
                   <div class="row">
+                  <div class="col-sm-6 col-md-4">
+                    <label class="form-label">Código</label>
+                    <input type="number" class="form-control produto-codigo" name="produto_codigo" readonly>
+                  </div>
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class="form-label">Produto</label>
-                        <select class="form-control custom-select">
-                          <option value="">Batata</option>
-                          <option value="">Arroz</option>
-                          <option value="">Feijão</option>
-                          <option value="">Coca-cola 2LT</option>
+                        <select class="form-control custom-select select-produto" onchange="onChangeProduto()">
+                          <?php
+                            require_once "../Factory.php";
+                            Factory::requireModelProduto();
+                            $oModelProduto = new ModelProduto();
+                            $aProduto = $oModelProduto->getAllProduct();
+                            foreach ($aProduto as $oProduto) {
+                              echo '<option name="produto" value=' . $oProduto['produto_codigo'] . '>' . $oProduto['produto_descricao'] .  '</option>';
+                            }
+                          ?>
                         </select>
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-4">
                       <div class="form-group">
                         <label class="form-label">Quantidade</label>
-                        <input type="number" class="form-control" placeholder="Digite aqui a quantidade">
+                        <input type="number" class="form-control quantidade" name="quantidade" placeholder="Digite aqui a quantidade">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-4">
@@ -126,7 +136,7 @@
                           <span class="input-group-prepend">
                             <span class="input-group-text">R$</span>
                           </span>
-                          <input type="text" class="form-control text-right" aria-label="Valor">
+                          <input type="text" class="form-control text-right valor-unidade" name="valor_unidade" aria-label="Valor">
                         </div>
                       </div>
                     </div>
@@ -137,7 +147,7 @@
                           <span class="input-group-prepend">
                             <span class="input-group-text">R$</span>
                           </span>
-                          <input type="text" class="form-control text-right" aria-label="Valor" disabled="disabled" title="Este campo não pode ser alterado">
+                          <input type="text" class="form-control text-right valor-total"  name="valor_total" aria-label="Valor" disabled="disabled" title="Este campo não pode ser alterado">
                         </div>
                       </div>
                     </div>
@@ -146,7 +156,7 @@
                         <div class="form-label">&nbsp;</div>
                         <div class="custom-controls-stacked">
                           <label class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" name="example-checkbox1" value="option1" checked>
+                            <input type="checkbox" class="custom-control-input" name="atualiza_valor" value="option1" checked>
                             <span class="custom-control-label">Atualizar valor unitário do produto</span>
                           </label>
                         </div>
